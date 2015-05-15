@@ -224,12 +224,11 @@ figcaption .hhmm{
 	top: 10px;
 }
 .reply img:hover{
-	opacity: 0.9;
+	opacity: 0.8;
 }
 .messenge:hover .messengebubble{
 	color: #455972;
 }
-
 
 
 aside h2{
@@ -264,9 +263,11 @@ aside .recent-messenge:last-of-type{
 	border-radius: 50%;
 	display: inline-block;
 	float: left;
-
 }
 
+.recent-messenge img:hover{
+	opacity: 0.8;
+}
 .recent-messenge .recent-messengebubble{
 	display: inline-block;
 	float: right;
@@ -275,6 +276,8 @@ aside .recent-messenge:last-of-type{
 	min-height: 60px;
 	border-radius: 5px;
 	position: relative;
+	padding: 8px;
+	
 }
 
 .recent-messenge .recent-messengebubble:before{
@@ -289,11 +292,15 @@ aside .recent-messenge:last-of-type{
 	right: 100%;
 }
 
-
-
-.recent-messenge .recent-messengebubble {
-	padding: 8px;
+.recent-messenge .recent-messengebubble a{
+	text-decoration: none;
 	color: #979595;
+}
+
+.recent-messenge .recent-messengebubble:hover {
+	color: #5f5454;
+	background-color: #bdf0c6;
+	cursor: default;
 }
 
 .recent-messenge .name a{
@@ -309,7 +316,7 @@ aside .recent-messenge:last-of-type{
 }
 
 .recent-messenge>img:hover{
-	opacity: 0.9;
+	opacity: 0.8;
 }
 
 form{
@@ -360,4 +367,102 @@ form{
 input[type="submit"]{
 	visibility: hidden;
 	position: absolute;
+}
+
+.tab-container{
+	padding: 0;
+	margin:0 20px 20px 20px;
+	position: relative;
+}
+.tab-container .one-tab{
+	list-style-type: none;
+	list-style-position: inside;
+	display: inline-block;
+	padding: 8px;
+	background-color: #a1a1a1;
+	margin-right: 10px;
+	color: #ffffff;
+	cursor: pointer;
+	opacity: 0.8;
+	position: relative;
+}
+
+
+.tab-container .one-tab:hover{
+	opacity: 1;
+}
+.tab-container .close-tab{
+	margin-left: 10px;
+	float: right;
+	width: 12px;
+	height: 12px;
+	background-image: url(../img/close.png);
+	cursor: pointer;
+}
+
+.tab-container .one-tab.active{
+		background-color: #4ec862;
+}
+.tab-container .one-tab.active:after{
+	content: "";
+	width: 0px;
+	height: 0px;
+	border: 5px solid transparent;
+	border-top-color: #4ec862;
+	display: block;
+	position: absolute;
+	bottom: -9px;
+	left: 15px;
+}
+
+.tab-container .one-tab .close-tab:hover{
+	background-image: url(../img/closehover.png);
+}
+
+.tab-container .one-tab.new-mail .close-tab:before{
+	content: "";
+	width: 16px;
+	height: 16px;
+	display: block;
+	position: absolute;
+	background-image: url(../img/mail.png);
+	background-repeat: no-repeat;
+	top: 7px;
+	right: 23px;
+	opacity: 0.8
+}
+.tab-container .one-tab.new-mail .close-tab{
+		margin-left		: 25px;
+
+}
+
+aside .more a{
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 13px;
+	display: inline-block;
+	background-color: #7fda8e;
+	text-align: center;
+	font-weight: 300;
+	width: 100%;
+	line-height: 27px;
+	opacity: 0.8;
+}
+aside .more:hover a{
+	opacity: 1;
+}
+
+aside .empty{
+	text-transform: uppercase;
+	font-size: 14px;
+	display: inline-block;
+	background-color: #d1eed6;
+	text-align: center;
+	font-weight: 300;
+	width: 100%;
+	line-height: 62px;
+	border-radius: 5px;
+	margin: 15px 0;
+	cursor: default;
 }
