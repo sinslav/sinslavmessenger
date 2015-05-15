@@ -361,7 +361,6 @@ form{
 	left: 385px;
 	top: 20px;
 	position: absolute;
-	z-index: 2;
 }
 
 input[type="submit"]{
@@ -465,4 +464,60 @@ aside .empty{
 	border-radius: 5px;
 	margin: 15px 0;
 	cursor: default;
+}
+
+.main h2{
+	text-transform: uppercase;
+	color: #8DC6CF;
+	font-size: 16px;
+	display: inline-block;
+	background-image: linear-gradient(#dcfbe1 0%, #dcfbe1 70%, transparent 70%, transparent 100%;);
+	text-align: center;
+	font-weight: 400;
+	width: 595px;
+	line-height: 32px;
+	margin: 0 15px 15px 15px;
+}
+.main .messenge.list .messengebubble{
+		max-width: 400px;
+}
+
+
+.main .messenge.list .messengebubble p{
+	background-color: transparent;
+}
+
+.main .messenge.list .messengebubble:before{
+	display: none;
+}
+
+.main .messenge.list{
+	background-color: #f5f9ff;
+	border-radius: 5px;
+}
+
+.main .messenge.list figure{
+	padding:10px;
+	padding-right: 0;
+
+}
+.main .messenge.list a{
+color:#7e8c9d;
+}	
+
+.main .messenge.list.unread{
+	background-color: #DCFBE1;
+	position: relative;
+}
+.main .messenge.list.unread:after{
+	content: "";
+	width: 16px;
+	height: 16px;
+	display: block;
+	position: absolute;
+	background-image: url(../img/mail.png);
+	background-repeat: no-repeat;
+	right: 10px;
+	top: 10px;
+
 }
