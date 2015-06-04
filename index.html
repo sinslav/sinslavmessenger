@@ -1,45 +1,146 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Messenger via Bootstrap</title>
-<!--         <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->        
-		 <link href="css/styles.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-    <div class="wrapper container">
-    	<header>
-    		<div class="col-xs-12 nav" >
-    			<div class="row">
-    				<div class="col-xs-4">
-    					<ul class="list-unstyled list-inline menu menu-left">
-    						<li><a href="#">menu item 1</a></li>
-    						<li><a href="#">menu item 2</a></li>
-    					</ul>
-    				</div>
-    				<div class="col-xs-4">
-    					<a href="index.html">
-    						<img class="logo" src="images/logo.png" alt="Messenger">
-    					</a>
-    				</div>
-    				<div class="col-xs-4">
-    					<ul class="list-unstyled list-inline menu menu-right">
-    						<li><a href="#">menu item 3</a></li>
-    						<li><a href="#">menu item 4</a></li>
-    					</ul>
-    				</div>
-    			</div>
-    		</div>
-    	</header>
-    	<div class="row">
-    		<section class="col-xs-8"></div>
-    		<aside class="col-xs4"></div>
-    	</div> 
+<head>
+    <title>Messenger via Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
 
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/mustache.min.js"></script>
+    <script src="js/lodash.min.js"></script>
+    <script src="js/userList.js"></script>
+    <script src="js/index.js"></script>
+    <link href="css/styles.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="wrapper container">
+    <header>
+        <div class="row">
+            <div class="col-xs-12 nav" >
+                <div class="row">
+                    <div class="col-xs-4">
+                        <ul class="list-unstyled list-inline menu menu-left">
+                            <li><a href="index.html">main page</a></li>
+                            <li><a href="#">menu item 2</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="index.html">
+                            <img class="logo" src="images/logo.png" alt="Messenger">
+                        </a>
+                    </div>
+                    <div class="col-xs-4">
+                        <ul class="list-unstyled list-inline menu menu-right">
+                            <li><a href="#">menu item 3</a></li>
+                            <li><a href="#">menu item 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="row main">
+        <section class="col-xs-8 no-side-padding">
+            <div class="col-xs-12 tab-container">
+                <a href="#" class="tab tab-active">Persone Name <i class="glyphicon glyphicon-remove"></i></a>
+                <a href="#" class="tab ">Persone Name</a>
+                <a href="#" class="tab ">Persone Name</a>
+                <a href="#" class="tab tab-new-mail"><i class="glyphicon glyphicon-envelope"></i>Persone Name</a></div>
+            <!-- DIALOGS START -->
+            <div class="col-xs-12 dialog">
+                <div class="col-xs-12 sender">
+                    <div class="row inputer .no-side-padding">
+                        <div class="col-xs-2">
+                            <img class="img-person" src="http://placehold.it/64x64" alt="Person photo">
+                        </div>
+                        <div class="col-xs-8">
+                            <form name="curent-user-messenge" novalidate >
+                                <textarea name="user-input" id="user-input" placeholder="Enter your messenge"></textarea>
+                                <input class="submit-messenge" type="submit" id="sent" value="sent messenge">
+                            </form>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#"><img class="img-person" src="http://placehold.it/64x64" alt="Person photo"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <aside class="col-xs-4">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="right-col">
+                        <span class="right-col-flag">last dialogs</span>
+                        <span class="right-col-no-dialogs notify">You have no dialogs. It seems that nobody loves you. Just die.</span>
+
+                        <input type="button" class="button notify right-col-btn" value="show more">
+                    </div>
+                </div>
+            </div>
+        </aside>
     </div>
-    <footer></footer>
-    </body>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer row">
+            <div class="col-xs-3 col-xs-offset-9 copyright ">
+                <span class="glyphicon glyphicon-copyright-mark"></span>
+                <div class="copyright-text">2015 by Sinchenko Yaroslav</div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script type="x-tmpl-mustache" id='message-list'>
+    	{{#messages}}{{#users}}
+	    <div class="row one-messenge">
+			<div class="col-xs-4">
+			<figure class="row person">
+				<div class="col-xs-5">
+					<a href="#"><img class="img-person" src="{{photo}}" alt="Photo of {{firstname}} {{lastname}}"></a>
+				</div>
+				<div class="xs-col-7 person no-side-padding">
+					<div class="person-info">
+						<a class="person-name" href="#">{{firstname}} {{lastname}}</a>
+						<div class="date-time">{{created_at}}</div>
+					</div>
+				</div>
+					
+				</figure>
+			</div>
+			<div class="col-xs-8">
+				<div class="text-bubble">
+					<span>{{text}}</span>
+				</div>
+			</div>
+		</div>
+    	{{/users}}{{/messages}}
+	</script>
+<script type="x-tmpl-mustache" id="right-colomn">
+{{#messages}}{{#users}}
+    <div class="row right-col-messenge notify">
+        <div class="col-xs-4">
+            <a href="#">
+                <img class="img-person" src="{{photo}}" alt="Photo of {{firstname}} {{lastname}}">
+            </a>
+        </div>
+        <div class="col-xs-8">
+            <div class="text-bubble text-bubble-right-col">
+                <i class="glyphicon glyphicon-remove"></i>
+                <a href="#">
+                    <span class="name">{{firstname}} {{lastname}}</span>
+                    <span>{{right_colomn_text}}</span>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+{{/users}}{{/messages}}
+</script>
 </html>
