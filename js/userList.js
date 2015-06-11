@@ -42,12 +42,12 @@ var messages = [
 {
 	id: 1,
 	text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem unde quod id aliquam quo laborum, est tenetur iste similique possimus, vero. Et at sunt, deserunt non commodi consectetur illo accusantium.',
-	created_at: 'Mon Jun 02 2015 16:22:08 GMT+0300 (EEST)',
+	created_at: new Date().getUTCHours() + ':' + new Date().getUTCMinutes() + ':' + new Date().getUTCSeconds(),
 	updated_at:  'Mon Jun 03 2015 16:25:08 GMT+0300 (EEST)',
 	sender_id: 1,
 	dialog_id: 1,
-	right_colomn_text: 'old-for-test'
-}
+    rightColomnText:'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+	}
 ];
 
 var dialogs = [

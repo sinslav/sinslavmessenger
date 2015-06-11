@@ -1,30 +1,19 @@
+document.addEventListener("DOMContentLoaded", insertTemplates); // выполняется на событие создания DOM'а т.к. код отрабатывает ранее создания элемента
 
-
-for (var i = messages.length - 1; i >= 0; i--) {
-	var timeArray = messages[i].created_at.split(' ');  // преобразовал дату в массив разбив по пробелам
-	messages[i].created_at = (timeArray[2]+ ' ' + timeArray[1]+ ' ' +  timeArray[4]).toString(); // создал строку с датой в нужном формате для вывода в шаблон
-}
-
-for (var k= messages.length -1; k >= 0; k--) {
-    messages[k].right_colomn_text = messages[k].text.substr(0, 90) + '...'; // Обрезаю текст сообщения, записывая его в новое свойство messages.right_colomn_text
-}
-
-$(function() {
-	var template = document.getElementById('message-list').innerHTML;
-	var data = {
-		messages: messages,
-		users: users
-	};
-	$('.dialog').prepend(Mustache.render(template, data));
-
-
-});
-
-$(function() {
-var template_right = document.getElementById('right-colomn').innerHTML;
-    var data = {
-        messages: messages,
-        users: users
+function insertTemplates() {
+    var templator = {
+        centerColumnTemplate: document.getElementById('message-list').innerHTML, //шаблон центральной колонки
+        rightColumnTemplate: document.getElementById('right-colomn').innerHTML, //шаблон правой колонки
+        centerColumn: document.querySelector('.dialog'), //узел для вставки центральной колонки
+        rightColumn : document.querySelector('.right-col-msgs'), //узел для вставки  правой колонки
+        data : {
+            messages: messages,
+            users: users
+        }
     };
-$('.right-col-btn').prepend(Mustache.render(template_right, data));
-});
+
+    templator.centerColumn.innerHTML = (Mustache.render(templator.centerColumnTemplate, templator.data));
+    templator.rightColumn.innerHTML = (Mustache.render(templator.rightColumnTemplate, templator.data));
+}
+
+
