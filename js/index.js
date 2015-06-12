@@ -14,6 +14,7 @@ function insertTemplates() {
 
     templator.centerColumn.innerHTML = (Mustache.render(templator.centerColumnTemplate, templator.data));
     templator.rightColumn.innerHTML = (Mustache.render(templator.rightColumnTemplate, templator.data));
+    routie('test', function(){alert('test')});
 }
 
 

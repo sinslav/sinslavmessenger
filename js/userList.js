@@ -35,7 +35,6 @@ var users = [
 	lastname: "Partenit",
 	photo: "img/6.jpg"
 }
-
 ];
 
 var messages = [
