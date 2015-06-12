@@ -1,5 +1,5 @@
 
-var users = [
+var usersObject = [
 {	id: 0,
 	firstname: "Yaroslav",
 	lastname: "Sinchenko",
@@ -37,16 +37,34 @@ var users = [
 }
 ];
 
-var messages = [
+var messagesObject = [
 {
 	id: 1,
 	text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem unde quod id aliquam quo laborum, est tenetur iste similique possimus, vero. Et at sunt, deserunt non commodi consectetur illo accusantium.',
 	created_at: new Date().getUTCHours() + ':' + new Date().getUTCMinutes() + ':' + new Date().getUTCSeconds(),
 	updated_at:  'Mon Jun 03 2015 16:25:08 GMT+0300 (EEST)',
 	sender_id: 1,
-	dialog_id: 1,
+	dialog_id: 2,
     rightColomnText:'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	}
+	},
+    {
+    id: 2,
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem unde quod id aliquam quo laborum, est tenetur iste similique possimus, vero. Et at sunt, deserunt non commodi consectetur illo accusantium.',
+    created_at: new Date().getUTCHours() + ':' + new Date().getUTCMinutes() + ':' + new Date().getUTCSeconds(),
+    updated_at:  'Mon Jun 03 2015 16:25:08 GMT+0300 (EEST)',
+    sender_id: 1,
+    dialog_id: 1,
+    rightColomnText:'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+    },
+    {
+    id: 3,
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem unde quod id aliquam quo laborum, est tenetur iste similique possimus, vero. Et at sunt, deserunt non commodi consectetur illo accusantium.',
+    created_at: new Date().getUTCHours() + ':' + new Date().getUTCMinutes() + ':' + new Date().getUTCSeconds(),
+    updated_at:  'Mon Jun 03 2015 16:25:08 GMT+0300 (EEST)',
+    sender_id: 2,
+    dialog_id: 1,
+    rightColomnText:'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+    }
 ];
 
 var dialogs = [

@@ -7,14 +7,29 @@ function insertTemplates() {
         centerColumn: document.querySelector('.dialog'), //узел для вставки центральной колонки
         rightColumn : document.querySelector('.right-col-msgs'), //узел для вставки  правой колонки
         data : {
-            messages: messages,
-            users: users
+            messages: messagesObject,
+            users: usersObject
         }
     };
 
     templator.centerColumn.innerHTML = (Mustache.render(templator.centerColumnTemplate, templator.data));
     templator.rightColumn.innerHTML = (Mustache.render(templator.rightColumnTemplate, templator.data));
-    routie('test', function(){alert('test')});
+
+    routie( {
+            'dialog/:dial_id': function(dial_id){
+                var crrntData = {};
+                templator.centerColumn.innerHTML = '';
+                crrntData.messages = _.where(messagesObject, {'dialog_id': dial_id});
+                crrntData.users = usersObject;
+
+                console.log(crrntData.messages);
+                templator.centerColumn.innerHTML = (Mustache.render(templator.centerColumnTemplate, crrntData));
+
+            }
+        }
+    );
+
 }
+
 
 
