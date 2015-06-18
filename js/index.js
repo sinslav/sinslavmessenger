@@ -3,18 +3,19 @@ document.addEventListener("DOMContentLoaded", insertTemplates); // выполн�
 
 function insertTemplates() {
 
-    var crntDialogId, templator, sender, reciever, crrntData, xhr, dataObj;
+    var crntDialogId, templator, sender, reciever, crrntData, xhr, dataJson;
     xhr = new XMLHttpRequest();
     xhr.open('GET', 'js/messengerData.json');
     xhr.send();
     xhr.onreadystatechange = function () {
         if (this.readyState===4 && this.status === 200) {
-            dataObj = JSON.parse(this.responseText);
+            var dataObj = JSON.parse(this.responseText);
             console.log(dataObj);
             return dataObj;
         }
     };
-    console.log(dataObj);
+    dataJson =  xhr.onreadystatechange;
+    console.log(dataJson);
 
 
 
