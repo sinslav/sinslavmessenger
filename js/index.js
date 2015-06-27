@@ -1,60 +1,7 @@
-document.addEventListener("DOMContentLoaded", insertTemplates); // выполняется на событие создания DOM'а т.к. код отрабатывает ранее создания элемента
-
-
 function insertTemplates() {
-    var confirmOldBrowser, goHappyBrowser, getMessagesFromJson, ajaxConfirmQuestion, happyBrowserLocation, getData, myData, xhr;
+    function setContent () {
 
-    // Проверка на AJAX
-
-    ajaxConfirmQuestion = 'You browser does not support our site (AJAX). Click OK to update your browser';
-    happyBrowserLocation = 'http://browsehappy.com/?locale=en';
-
-    confirmOldBrowser = function () {
-        return confirm(ajaxConfirmQuestion)
-    };
-
-    goHappyBrowser = function () {
-        confirmOldBrowser();
-        if (confirmOldBrowser) {
-            window.location = happyBrowserLocation
-        }
-    };
-
-    // Проверка на AJAX
-
-
-    var abc;
-    // AJAX запрос
-    getMessagesFromJson = function (url) {
-        if (window.XMLHttpRequest) {
-            xhr = new XMLHttpRequest();
-            xhr.open('GET', url);
-            xhr.send();
-
-            getData = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    abc = JSON.parse(xhr.responseText);
-                    return abc;
-                }
-            };
-            xhr.addEventListener('readystatechange', getData);
-        }
-        else
-            goHappyBrowser();
-    };
-
-
-
-
-    getMessagesFromJson('js/messengerData.json');
-
-    myData = function (){ return getData.bind(getMessagesFromJson)};
-    console.log(myData());
-
-    function myFunc () {
-        console.log(abc);
-        // заполнение шаблонов данными
-        var crntDialogId, templator, sender, reciever, crrntData, xhr, dataJson;
+        var crntDialogId, templator, sender, reciever, crrntData;
 
         templator = {
             centerColumnTemplate: document.getElementById('message-list').innerHTML, //шаблон центральной колонки
@@ -62,13 +9,20 @@ function insertTemplates() {
             centerColumn: document.querySelector('.dialog'), //узел для вставки центральной колонки
             rightColumn: document.querySelector('.right-col-msgs'), //узел для вставки  правой колонки
             data: {
-                messages: messagesObject,
-                users: usersObject
+                messages: requestData.getData().messeges,
+                users: requestData.getData().users
+            },
+            insertData: function (tmpl, place){
+                this.place.innerHTML = (Mustache.render(this.tmpl, this.data));
             }
-        };
 
-        templator.centerColumn.innerHTML = (Mustache.render(templator.centerColumnTemplate, templator.data));
-        templator.rightColumn.innerHTML = (Mustache.render(templator.rightColumnTemplate, templator.data));
+        };
+        templator.insertData(templator.centerColumnTemplate, templator.centerColumn);
+        templator.insertData(templator.rightColumnTemplate, templator.rightColumn);
+
+
+        //templator.centerColumn.innerHTML = (Mustache.render(templator.centerColumnTemplate, templator.data));
+        //templator.rightColumn.innerHTML = (Mustache.render(templator.rightColumnTemplate, templator.data));
 
 
         routie({
@@ -90,8 +44,10 @@ function insertTemplates() {
             }
         );
         }
-    xhr.addEventListener('readystatechange', myFunc);
+    requestData.xhr.onload = setContent;
 }
+
+
 
 
 
