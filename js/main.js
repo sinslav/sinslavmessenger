@@ -6,7 +6,7 @@ function insertTemplates() {
         rightColumnTemplate: document.getElementById('right-colomn').innerHTML, //шаблон правой колонки
         centerColumn: document.querySelector('.dialog'), //узел для вставки центральной колонки
         rightColumn: document.querySelector('.right-col-msgs'), //узел для вставки  правой колонки
-        clearCenterColumn: function(){
+        clearCenterColumn: function () {
             this.centerColumn.innerHTML = 'Loading...'
         },
         insertData: function (place, tmpl, dataTmpl) { // метод вставки шаблонов
@@ -24,14 +24,14 @@ function insertTemplates() {
 
 
     // работа с хешами
-    routie('dialog/:dialId', function(dialId){
+    routie('dialog/:dialId', function (dialId) {
         dialIdArg = parseInt(dialId, 10);
         if (typeof(dialIdArg) != 'NaN') {
             hasher(dialIdArg);
         }
-    } );
+    });
 
-    function hasher (arg){
+    function hasher(arg) {
         templator.clearCenterColumn();
         var senderId = _.findWhere(requestData.getData().dialogs, {id: arg}).first_recipient_id;
         var receiverId = _.findWhere(requestData.getData().dialogs, {id: arg}).second_recipient_id;
@@ -44,6 +44,7 @@ function insertTemplates() {
         templator.insertData(templator.centerColumn, templator.centerColumnTemplate, currentDialogData);
 
     }
+}
 
 /**
  * Created by sinslav on 27.06.15.
