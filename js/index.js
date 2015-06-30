@@ -1,5 +1,5 @@
 function insertTemplates() {
-    function setContent () {
+    function setContent() {
 
         var crntDialogId, templator, sender, reciever, crrntData;
 
@@ -12,7 +12,7 @@ function insertTemplates() {
                 messages: requestData.getData().messeges,
                 users: requestData.getData().users
             },
-            insertData: function (tmpl, place){
+            insertData: function (tmpl, place) {
                 this.place.innerHTML = (Mustache.render(this.tmpl, this.data));
             }
 
@@ -31,8 +31,8 @@ function insertTemplates() {
                     templator.centerColumn.innerHTML = '';
 
                     crntDialogId = parseInt(dial_id);
-                    sender = parseInt(dialogs[crntDialogId - 1].first_recipient_id); //Определяю айди отправителя
-                    reciever = parseInt(dialogs[crntDialogId - 1].second_recipient_id); //Определяю айди получателя
+                    sender = parseInt(dialogs[crntDialogId - 1].first_recipient_id); //OK //Определяю айди отправителя
+                    reciever = parseInt(dialogs[crntDialogId - 1].second_recipient_id); // OK //Определяю айди получателя
 
                     crrntData = {};
                     crrntData.messages = _.where(messagesObject, {'dialog_id': crntDialogId});
@@ -43,7 +43,8 @@ function insertTemplates() {
                 }
             }
         );
-        }
+    }
+
     requestData.xhr.onload = setContent;
 }
 
