@@ -1,0 +1,1 @@
+var requestData,dataMessage;requestData={xhr:new XMLHttpRequest,getData:function(){return 4===this.readyState&&200===this.status&&(dataMessage=JSON.parse(this.responseText)),dataMessage},init:function(t){this.xhr.open("GET",t),this.xhr.send(),this.xhr.onreadystatechange=this.getData}},requestData.init("js/messengerData.json");

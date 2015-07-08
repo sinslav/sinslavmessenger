@@ -12,15 +12,15 @@ function insertTemplates() {
         insertData: function (place, tmpl, dataTmpl) { // метод вставки шаблонов
             place.innerHTML = (Mustache.render(tmpl, dataTmpl));
         },
-        dat: {
+        openDialogsData: {
             messages: requestData.getData().messeges,
             users: requestData.getData().users
         }
     };
 
     // заполнение шаблонов данными
-    templator.insertData(templator.centerColumn, templator.centerColumnTemplate, templator.dat);
-    templator.insertData(templator.rightColumn, templator.rightColumnTemplate, templator.dat);
+    templator.insertData(templator.centerColumn, templator.centerColumnTemplate, templator.openDialogsData);
+    templator.insertData(templator.rightColumn, templator.rightColumnTemplate, templator.openDialogsData);
 
 
     // работа с хешами
@@ -45,6 +45,8 @@ function insertTemplates() {
 
     }
 }
+
+
 
 /**
  * Created by sinslav on 27.06.15.
